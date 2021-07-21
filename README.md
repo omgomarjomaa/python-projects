@@ -4,7 +4,7 @@ A simple ping pong game written in Python.
 # Introduction
 
 
-1. mainGame.py: The initialization and main loop of the game.
+1. pong.py: The initialization and main loop of the game.
 
 # Requirement
 
