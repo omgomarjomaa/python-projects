@@ -1,26 +1,5 @@
-# python-projects
-A simple ping pong game written in Python.
+Single and multi player pong game written in python 3 using the pygame module.
 
-# Introduction
+Controls - up & down arrow keys and w & s keys and arrow keys for single player version
 
-
-1. pong.py: The initialization and main loop of the game.
-
-# Requirement
-
-1. Python 3
-2. Python-Pygame
-  
-# How To Start Game
-  
-```bash
-$ python mainGame.py
-```
-
-# License
-
-
-# Screeshot
-
-
-# Doc
+After installing pygame, just run Pong.py with python3. The ball gets faster as the game goes on for added difficulty. Enjoy :).

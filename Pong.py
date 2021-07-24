@@ -8,11 +8,11 @@ WHITE       = (255, 255, 255)
 RED 		= (205, 92, 92)
 WIDTH       = 700
 HEIGHT      = 500
-BALL_RADIUS = 10
+BALL_RADIUS = 8
 PAD_WIDTH   = 8
 PAD_HEIGHT  = 70
 DIFF 		= 2 		# positive integer representing difficulty level
-TOPSCORE    = 5	
+TOPSCORE    = 10	
 
 pygame.init()
 fpsClock = pygame.time.Clock()
@@ -26,7 +26,7 @@ class Ball():
 	def reset(self, direction):
 		self.pos = [int(WIDTH/2),int(HEIGHT/2)]
 		if direction == "Right":
-			self.vel = [random.randint(2,4),-random.randint(1,3)]
+		    self.vel = [random.randint(2,4),-random.randint(1,3)]
 		elif direction == "Left":
 			self.vel = [-random.randint(2,4),-random.randint(1,3)]
 	def draw(self, window_obj):
@@ -36,6 +36,7 @@ class Ball():
 			self.vel[1] = -self.vel[1]
 		self.pos[0] += self.vel[0]
 		self.pos[1] += self.vel[1]	
+
 class Paddle():
 	def __init__(self, pos, vel, width, height, color, score):
 		self.pos    = pos
@@ -66,12 +67,12 @@ def check_collision(ball, paddle1, paddle2):
 				ball.reset("Right")
 
 def win_msg(window_obj, player):
-	window_obj.fill(BLACK) #font mta3 el jeu fekher el resultas
+	window_obj.fill(BLACK)
 	try:
-		font             = pygame.font.Font("fonts/adrip.ttf", 10)
+		font             = pygame.font.Font("fonts/Megadeth.ttf", 70)
 	except:
-		font             = pygame.font.Font(None, 100)
-	msg 			= font.render(player + " rbeht nikomek", True, WHITE)
+		font             = pygame.font.Font(None, 70)
+	msg 			= font.render(player + " Wins", True, WHITE)
 	msgRect         = msg.get_rect()
 	msgRect.centerx = int(WIDTH/2)
 	msgRect.centery = int(HEIGHT/2)
@@ -88,10 +89,10 @@ def win_msg(window_obj, player):
 
 def draw_scores(window_obj, score1, score2):
 	try:
-		font          = pygame.font.Font("fonts/adrip.ttf", 40)
+		font          = pygame.font.Font("fonts/impact.ttf", 40)
 	except:
-		font          = pygame.font.Font(None, 50)
-	msg1          = font.render(str(score1), True, RED)
+		font          = pygame.font.Font(None, 40)
+	msg1          = font.render(str(score1), True, WHITE)
 	msg2          = font.render(str(score2), True, WHITE)	
 	msg1Rect      = msg1.get_rect()
 	msg2Rect      = msg2.get_rect()
@@ -125,7 +126,7 @@ def draw_options(window_obj, highlight):
 	window_obj.blit(msg2, msg2Rect)
 
 def run_game(window_obj, ball, paddle1, paddle2):
-	pygame.draw.line(window_obj, WHITE, (int(WIDTH/2), 0), (int(WIDTH/2), HEIGHT), 2)	#Draw central line and borders
+	#pygame.draw.line(window, WHITE, (int(WIDTH/2), 0), (int(WIDTH/2), HEIGHT), 2)	#Draw central line and borders
 	#pygame.draw.line(window, WHITE, (PAD_WIDTH, 0), (PAD_WIDTH, HEIGHT), 2)
 	#pygame.draw.line(window, WHITE, (WIDTH - PAD_WIDTH, 0), (WIDTH - PAD_WIDTH, HEIGHT), 2)
 	ball.update()
